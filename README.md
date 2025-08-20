@@ -8,7 +8,8 @@ The Expenses application is designed for recording daily expenses. Each register
 - Enable Machine Learning Capability (MCP) for the expenses app to provide additional insights into spending habits and suggest ways to reduce unnecessary expenses.
 
 
-<img width="1121" height="391" alt="image" src="https://github.com/user-attachments/assets/829c9c11-42bc-40d9-a67f-228b206acd8c" />
+<img width="1121" height="391" alt="EXPENSES" src="https://github.com/user-attachments/assets/b2baaec1-9d00-433a-9376-0433d65e0881" />
+
 
 userprofile ms swagger  
 
