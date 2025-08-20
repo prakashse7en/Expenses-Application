@@ -1,0 +1,607 @@
+{
+	"info": {
+		"_postman_id": "48d52504-9333-486b-b4cd-d609b3b2d8e5",
+		"name": "Billing Expenses",
+		"description": "1 Create auth token\n\n2.create user using valid auth token\n\n3\\. create Expenses using valid auth token",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "45494508"
+	},
+	"item": [
+		{
+			"name": "userprofile",
+			"item": [
+				{
+					"name": "GETUser",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(\"Pre-request script running...\");",
+									"let accessToken = pm.environment.get(\"access_token\");",
+									"console.log(\"Access Token (before check):\", accessToken);",
+									"",
+									"if (accessToken) {",
+									"    console.log(\"Using access_token:\", accessToken);",
+									"    pm.request.headers.add({",
+									"        key: 'Authorization',",
+									"        value: 'Bearer ' + accessToken",
+									"    });",
+									"} else {",
+									"    console.warn(\"No access_token found in environment.  Did you forget to get one?\");",
+									"}",
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/api/user/{{userId}}",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"user",
+								"{{userId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createUser",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let response = pm.response.json();",
+									"console.log(\"useridset\", response.userId);",
+									"pm.environment.set(\"userId\", response.userId);",
+									"console.log(\"userid after set:\", pm.environment.get(\"userId\"));"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(\"Pre-request script running...\");",
+									"let accessToken = pm.environment.get(\"access_token\");",
+									"console.log(\"Access Token (before check):\", accessToken);",
+									"",
+									"if (accessToken) {",
+									"    console.log(\"Using access_token:\", accessToken);",
+									"    pm.request.headers.add({",
+									"        key: 'Authorization',",
+									"        value: 'Bearer ' + accessToken",
+									"    });",
+									"} else {",
+									"    console.warn(\"No access_token found in environment.  Did you forget to get one?\");",
+									"}",
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userName\":\"thirduser\",\n    \"userPhoneNumber\":\"+85265783645\",\n    \"userEmail\":\"sample@add.com\"\n    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/api/user",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateUser",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(\"Pre-request script running...\");",
+									"let accessToken = pm.environment.get(\"access_token\");",
+									"console.log(\"Access Token (before check):\", accessToken);",
+									"",
+									"if (accessToken) {",
+									"    console.log(\"Using access_token:\", accessToken);",
+									"    pm.request.headers.add({",
+									"        key: 'Authorization',",
+									"        value: 'Bearer ' + accessToken",
+									"    });",
+									"} else {",
+									"    console.warn(\"No access_token found in environment.  Did you forget to get one?\");",
+									"}",
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userName\":\"seven\",\n    \"userPhoneNumber\":\"+85275783645\",\n    \"userEmail\":\"sample12277@add.com\"    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/api/user/{{userId}}",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"user",
+								"{{userId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "actuator",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/actuator/health",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"actuator",
+								"health"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "expenses",
+			"item": [
+				{
+					"name": "GetExpenses v1 page",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(\"Pre-request script running...\");",
+									"let accessToken = pm.environment.get(\"access_token\");",
+									"console.log(\"Access Token (before check):\", accessToken);",
+									"",
+									"if (accessToken) {",
+									"    console.log(\"Using access_token:\", accessToken);",
+									"    pm.request.headers.add({",
+									"        key: 'Authorization',",
+									"        value: 'Bearer ' + accessToken",
+									"    });",
+									"} else {",
+									"    console.warn(\"No access_token found in environment.  Did you forget to get one?\");",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8084/api/v1/expenses/{{userId}}?page=0&size=1",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"api",
+								"v1",
+								"expenses",
+								"{{userId}}"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetExpenses v2 slice",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(\"Pre-request script running...\");",
+									"let accessToken = pm.environment.get(\"access_token\");",
+									"console.log(\"Access Token (before check):\", accessToken);",
+									"",
+									"if (accessToken) {",
+									"    console.log(\"Using access_token:\", accessToken);",
+									"    pm.request.headers.add({",
+									"        key: 'Authorization',",
+									"        value: 'Bearer ' + accessToken",
+									"    });",
+									"} else {",
+									"    console.warn(\"No access_token found in environment.  Did you forget to get one?\");",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8084/api/v2/expenses/{{userId}}?page=0&size=1",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"api",
+								"v2",
+								"expenses",
+								"{{userId}}"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST expenses",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(\"Pre-request script running...\");",
+									"let accessToken = pm.environment.get(\"access_token\");",
+									"console.log(\"Access Token (before check):\", accessToken);",
+									"",
+									"if (accessToken) {",
+									"    console.log(\"Using access_token:\", accessToken);",
+									"    pm.request.headers.add({",
+									"        key: 'Authorization',",
+									"        value: 'Bearer ' + accessToken",
+									"    });",
+									"} else {",
+									"    console.warn(\"No access_token found in environment.  Did you forget to get one?\");",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": \"{{userId}}\",\n    \"expenseAmount\": 100.73,\n    \"category\": \"Food\",\n    \"description\": \"Random expense 398\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8084/api/v1/expenses",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"api",
+								"v1",
+								"expenses"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "AUTH",
+			"item": [
+				{
+					"name": "accesstoken",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let response = pm.response.json();",
+									"console.log(\"Access Token set:\", response.access_token);",
+									"pm.environment.set(\"access_token\", response.access_token);",
+									"console.log(\"Access Token after set:\", pm.environment.get(\"access_token\"));"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "expensesclientadmin",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "expensesuser",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/realms/expenses/protocol/openid-connect/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"realms",
+								"expenses",
+								"protocol",
+								"openid-connect",
+								"token"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "keycloak endpoint sample",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "grant_type",
+											"value": "password",
+											"type": "text"
+										},
+										{
+											"key": "client_id",
+											"value": "expenses-clientid",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "expensesuser",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "password",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8080/realms/expenses/protocol/openid-connect/token",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"realms",
+										"expenses",
+										"protocol",
+										"openid-connect",
+										"token"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-store"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "content-length",
+									"value": "2354"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"access_token\": \"eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJuQ2Zkb3NzSWoyWmhiNXB6Q2RlX2dCU0dXOFowLWRVdmszQldNOHlpUHdZIn0.eyJleHAiOjE3NTQ4NzI0MjMsImlhdCI6MTc1NDg3MjEyMywianRpIjoib25ydHJvOjdkNjJhODkyLWQwNTgtYjI5Zi00OTY3LWYyMmMxMWI5MjQwMCIsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC9yZWFsbXMvZXhwZW5zZXMiLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiN2IzZjBhMmUtMzk2Yi00NGE5LWFiNTAtYzI5OTZkYjQ1MGM5IiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiZXhwZW5zZXMtY2xpZW50aWQiLCJzaWQiOiI3ZDZkMGY0NC0wNDM0LTQxNjgtOTM3NS1lNmY4ZDk0YjE3NDIiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbIioiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwiYWRtaW4iLCJ1bWFfYXV0aG9yaXphdGlvbiIsImRlZmF1bHQtcm9sZXMtZXhwZW5zZXMiXX0sInJlc291cmNlX2FjY2VzcyI6eyJleHBlbnNlcy1jbGllbnRpZCI6eyJyb2xlcyI6WyJjbGllbnRhZG1pbiJdfSwiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJwcm9maWxlIGVtYWlsIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoiZXhwZW5zZXN1c2VyZm4gZXhwZW5zZXN1c2VyZm4iLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJleHBlbnNlc3VzZXIiLCJnaXZlbl9uYW1lIjoiZXhwZW5zZXN1c2VyZm4iLCJmYW1pbHlfbmFtZSI6ImV4cGVuc2VzdXNlcmZuIiwiZW1haWwiOiJoeWRyb3h5Lmxlc25hckBnbWFpbC5jb20ifQ.yWUQMLj--w-iwgq74Uc2oGSyUTJAh-rLQfqFHOzYLFO5BenShmx7ZKpge3MnXnu3C2urz3OAqZIozQQwy-yuP9hI5V4IS9uBCcmog98IoukDogjEGTg0gPMexbyQGoVgRskct-76eQuZy-zNpOxsvQzQ-vqCPCZOCteIK_GjGS_UgPaB91UFL0E_aCheIlEMTwM6DIaB63IEPu8yZC7Z88KI9GpuL6G6OTvCaH0mVzeqFyMX-REtI54OUAyuM6EzwNPtR0HwguMeARdiFqQ2eLILz4TobcxiqluxGayfHwX7r_wLQDnhU5oPDZ-HRpUpU7bge1IBCbjkFrbOTroTYQ\",\n    \"expires_in\": 300,\n    \"refresh_expires_in\": 1800,\n    \"refresh_token\": \"eyJhbGciOiJIUzUxMiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJmNTVjMDQwYi0xZTQwLTRlMjItYTU2OS1hNjdkOWJjNDdiZGYifQ.eyJleHAiOjE3NTQ4NzM5MjMsImlhdCI6MTc1NDg3MjEyMywianRpIjoiY2M3YWQ5NWMtNTZhNC02MDk1LTg1YzYtMmQ4NTM0MWZhNzY5IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL3JlYWxtcy9leHBlbnNlcyIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC9yZWFsbXMvZXhwZW5zZXMiLCJzdWIiOiI3YjNmMGEyZS0zOTZiLTQ0YTktYWI1MC1jMjk5NmRiNDUwYzkiLCJ0eXAiOiJSZWZyZXNoIiwiYXpwIjoiZXhwZW5zZXMtY2xpZW50aWQiLCJzaWQiOiI3ZDZkMGY0NC0wNDM0LTQxNjgtOTM3NS1lNmY4ZDk0YjE3NDIiLCJzY29wZSI6InByb2ZpbGUgcm9sZXMgYWNyIGVtYWlsIHdlYi1vcmlnaW5zIGJhc2ljIn0.rvfyMrNlh7AZ51HuA9buuAVa8ExS-FgrgfdficeQwN08X41uXPTJI7FUyt1F_XFcTcWm3yTEKTkhB-oCx4of8Q\",\n    \"token_type\": \"Bearer\",\n    \"not-before-policy\": 0,\n    \"session_state\": \"7d6d0f44-0434-4168-9375-e6f8d94b1742\",\n    \"scope\": \"profile email\"\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "accessToken",
+			"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJuQ2Zkb3NzSWoyWmhiNXB6Q2RlX2dCU0dXOFowLWRVdmszQldNOHlpUHdZIn0.eyJleHAiOjE3NTQ4NzU3ODcsImlhdCI6MTc1NDg3NTQ4NywianRpIjoib25ydHJvOjNiNWQ1NDM0LTUyZjYtY2UxMi0zMTAzLTcwNGMyNjY2OTBhZCIsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC9yZWFsbXMvZXhwZW5zZXMiLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiN2IzZjBhMmUtMzk2Yi00NGE5LWFiNTAtYzI5OTZkYjQ1MGM5IiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiZXhwZW5zZXMtY2xpZW50aWQiLCJzaWQiOiJjMjA4ODM4MC1lM2E3LTQyYjEtYjk3OS1iZGQxNTc4MzhmODUiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbIioiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwiYWRtaW4iLCJ1bWFfYXV0aG9yaXphdGlvbiIsImRlZmF1bHQtcm9sZXMtZXhwZW5zZXMiXX0sInJlc291cmNlX2FjY2VzcyI6eyJleHBlbnNlcy1jbGllbnRpZCI6eyJyb2xlcyI6WyJjbGllbnRhZG1pbiJdfSwiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJwcm9maWxlIGVtYWlsIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoiZXhwZW5zZXN1c2VyZm4gZXhwZW5zZXN1c2VyZm4iLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJleHBlbnNlc3VzZXIiLCJnaXZlbl9uYW1lIjoiZXhwZW5zZXN1c2VyZm4iLCJmYW1pbHlfbmFtZSI6ImV4cGVuc2VzdXNlcmZuIiwiZW1haWwiOiJoeWRyb3h5Lmxlc25hckBnbWFpbC5jb20ifQ.nKUi0IiB263naldkD9N5_Bd3GQ8YEaeEn4LthDNmQh1302l03yP8l2mLoA7QuDsOo5dYsl1zdrieUY65U_2Z7OOUjZ158Xzh9iKywP9L60WthUiParrZ3dKeZNQ6uPdrpqY5KdfKIKsQdzsiVrvR_q1UcdHTnpHQ0US-r0ogEYcVB7jrf6j1yGL8OHQ37hdV6jJu3PJPPl_-u_hQ32mPYssigohx-SxTzODfV3_lFANZJaTgtPiFHvx8ASyBnV3TcW9CN4IijvVMv2Us-dY_-dP3dtE3czQ8v81ft0NYrzF_ZOa-DVHugx7MZOT5jPAw78-wxVQNGGkYWTuk1W-5lA",
+			"type": "default"
+		}
+	]
+}
