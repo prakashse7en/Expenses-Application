@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - changeSet:
+      id: add-user-id-index
+      author: your_name
+      changes:
+        - createIndex:
+            indexName: idx_user_id
+            tableName: expenses
+            columns:
+              - column:
+                  name: user_id
+            unique: false
+            remarks: "Index added on user_id to improve query performance when filtering expenses by user_id."
