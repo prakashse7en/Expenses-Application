@@ -10,11 +10,14 @@ The Expenses application is designed for recording daily expenses. Each register
 
 <img width="1121" height="391" alt="image" src="https://github.com/user-attachments/assets/829c9c11-42bc-40d9-a67f-228b206acd8c" />
 
-userprofile ms swagger  http://localhost:8081/swagger-ui/index.html
-<img width="1565" height="774" alt="Screenshot 2025-08-19 at 2 17 45 PM" src="https://github.com/user-attachments/assets/996ecbcb-59a9-49cb-b8e5-c45ef158d4a6" />
+userprofile ms swagger  
 
-expenses ms swagger  http://localhost:8084/swagger-ui/index.html
-<img width="1600" height="881" alt="Screenshot 2025-08-19 at 2 17 33 PM" src="https://github.com/user-attachments/assets/55ed483d-bbee-444e-a3d0-8dccb6dae173" />
+<img width="1562" height="831" alt="Screenshot 2025-08-20 at 6 31 33 PM" src="https://github.com/user-attachments/assets/35dc2638-0f7b-4149-b437-c9e6ff29fbc3" />
+
+
+expenses ms swagger  
+<img width="1577" height="738" alt="Screenshot 2025-08-20 at 6 31 24 PM" src="https://github.com/user-attachments/assets/d8e24f25-c30b-4197-ad9b-8858d7c2e3d0" />
+
 
 
 ## Design Patterns Used
@@ -59,4 +62,16 @@ expenses ms swagger  http://localhost:8084/swagger-ui/index.html
 
 ## Future Enhancements
 - Adding MCP capablities for the application
+  vision is to add MCP so enduser has a capablity to interact with their budeget reports using Gemini /Claude etc models to derive knowledge this can be a lead for pulling the customers into the application
+#How is the app being monetized
+- for each report of their budget ,app chat asks what is the inward amount you recive every month and against how much you spend within the time frame suggest equity savings  products   to the user depending on RISK level
+  Commission based on each time you purchase equity investment /insurance
+  Main thing ask each user consent if they use their pattern saving not the entire savings data to derive knowledge on their invward and budget amount and what they do for savings can be used as suggestion to other users
+  say person earning 30k saves 15k  investments made via app and 15k uses as expenses school fees rent grocerries etc
+  other person who has similar income and similar expenses can use this above pattern savings as reference if above person is considered success in make huge profits <subjected to risk agreed by consumer>
+
+
+Workspace setup
+Docker images of keycloak,redis and kafka used 
+
 
