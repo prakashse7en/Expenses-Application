@@ -27,8 +27,17 @@ Example check the video attached in below link
 
 <img width="715" height="630" alt="Screenshot 2025-09-13 at 6 18 25 PM" src="https://github.com/user-attachments/assets/14225821-c238-4404-b2f1-56d270c5caef" />
 
+
 *  Using claude's capability to get a view of my expenses in graphical format and his views about my spendings
-* <img width="1440" height="898" alt="Screenshot 2025-09-13 at 6 20 38 PM" src="https://github.com/user-attachments/assets/e7b642f7-7eb5-4621-a8c4-f60a39e452c6" />
+<img width="1440" height="898" alt="Screenshot 2025-09-13 at 6 20 38 PM" src="https://github.com/user-attachments/assets/e7b642f7-7eb5-4621-a8c4-f60a39e452c6" />
+
+<img width="715" height="852" alt="Screenshot 2025-09-13 at 6 26 23 PM" src="https://github.com/user-attachments/assets/1f787c9e-aa24-43dc-b96b-05b22e13660e" />
+
+<img width="716" height="848" alt="Screenshot 2025-09-13 at 6 26 32 PM" src="https://github.com/user-attachments/assets/909b7dfa-b420-408a-b671-ab1aff09d935" />
+
+
+* Create New expenses for particular user
+<img width="707" height="641" alt="Screenshot 2025-09-13 at 6 27 15 PM" src="https://github.com/user-attachments/assets/2c3cf153-075b-4c1e-bfec-a3d615a3a804" />
 
 
 
