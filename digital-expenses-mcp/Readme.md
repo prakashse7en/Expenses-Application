@@ -24,6 +24,12 @@ for eg)
 Example check the video attached in below link
 
 # Sample prompts used
+### Note Calls made by Claude to the mcp application will have a popup  to ACK by  user to allow Claude to fetch from MCP application
+<img width="650" height="454" alt="Screenshot 2025-09-17 at 3 58 20 PM" src="https://github.com/user-attachments/assets/556f3c6c-94a9-4df7-b65c-26e38b95299e" />
+<img width="395" height="367" alt="Screenshot 2025-09-17 at 3 58 30 PM" src="https://github.com/user-attachments/assets/1331605f-c9de-4c79-9869-6431bff7d092" />
+
+
+
 * ## Getting an expenses
 <img width="697" height="245" alt="Screenshot 2025-09-13 at 6 17 21 PM" src="https://github.com/user-attachments/assets/8e048669-f879-40a6-8f4c-2369d909c970" />
 
