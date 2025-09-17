@@ -4,7 +4,7 @@
 This project is Spring boot MCP application that uses Sprinboot AI MCP starter to convert natural language to exact endpoints and share the requested response 
 
 ## Operations supported
-- Add Expense
+- Create Expense for a particular User
 - Get Expense by ID
 
 ## Prerequisites
@@ -15,6 +15,8 @@ This project is Spring boot MCP application that uses Sprinboot AI MCP starter t
 update the claude configuration file to add the jar file being referred in the project
 
 `../Library/Application Support/Claude/claude_desktop_config.json`
+
+absolute path of mcp application jar fileto be pointed in the claude config json file
 
 for eg)
 <img width="975" height="296" alt="Screenshot 2025-09-13 at 6 13 52 PM" src="https://github.com/user-attachments/assets/23189036-6dd2-4967-9975-2de3ab19c085" />
